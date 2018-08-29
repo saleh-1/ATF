@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ATF</string>
+
+    <string name="double_back_to_exit">إضغط زر الرجوع مرة اخرى للخروج</string>
+    <string name="no_data">لا يوجد بيانات</string>
+    <string name="loading">جاري تحديث البيانات</string>
+
+    <string name="ok">موافق</string>
+    <string name="cancel">إلغاء</string>
+    <string name="ok_done">عُلم</string>
+    <string name="done">تم</string>
+
+    <string name="search_button">بحث</string>
+    <string name="search_results">نتائج البحث</string>
+    <string name="search_title_invalid">نص البحث غير صالح</string>
+</resources>

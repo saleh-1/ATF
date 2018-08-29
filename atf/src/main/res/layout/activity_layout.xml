@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    tools:context=".ActivityTabs">
+
+    <include
+        android:id="@+id/navbar_view"
+        layout="@layout/activity_navbar" />
+
+    <View
+        android:id="@+id/navbar_separator"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_margin="0dp"
+        android:layout_below="@+id/navbar_view"
+        android:background="@color/colorGray"
+
+        />
+
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bnve"
+        android:layout_below="@+id/navbar_separator"
+        android:animateLayoutChanges="true">
+
+    </FrameLayout>
+
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/bnve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
+        />
+    <!--
+        app:menu="@menu/bottom_navigation_items"
+    -->
+
+</RelativeLayout>

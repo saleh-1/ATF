@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lvc_blank"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+    <View
+        android:id="@+id/view_vertical_space_view"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        />
+
+    <include
+        android:id="@+id/horizontal_line"
+        layout="@layout/separator"
+        />
+
+</LinearLayout>
