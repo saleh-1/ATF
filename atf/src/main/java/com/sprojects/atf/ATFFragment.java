@@ -32,11 +32,11 @@ import java.util.ArrayList;
 public class ATFFragment extends Fragment
 {
     protected Context context;
-    public ArrayList<View> Views = new ArrayList<>();
+    public ArrayList<View> lvViews = new ArrayList<>();
     public LoadingIndicator loadingIndicator;
-    public SwipeRefreshLayout SwipeRefresh;
-    public ListView LV;
-    public LVAdapter LVAdapter;
+    public SwipeRefreshLayout swipeRefresh;
+    public ListView lv;
+    public LVAdapter lVAdapter;
     public boolean viewAppeared = false;
 
     public ATFNavigationInterface navigationManager;
@@ -88,9 +88,9 @@ public class ATFFragment extends Fragment
     {
         View mfv = inflater.inflate(R.layout.lv, container, false);
 
-        LV = (ListView) mfv.findViewById(R.id.listview);
-        LVAdapter = new LVAdapter(context);
-        SwipeRefresh = (SwipeRefreshLayout) mfv.findViewById(R.id.list_view_swipe_to_refresh);
+        lv = (ListView) mfv.findViewById(R.id.listview);
+        lVAdapter = new LVAdapter(context);
+        swipeRefresh = (SwipeRefreshLayout) mfv.findViewById(R.id.list_view_swipe_to_refresh);
         loadingIndicator = new LoadingIndicator(context);
 
         setupLV();
@@ -329,15 +329,15 @@ public class ATFFragment extends Fragment
 
     public void setupLV()
     {
-        if (LV == null) return;
+        if (lv == null) return;
 
-        LV.setDivider(null);
-        LV.setDividerHeight(0);
-        LV.setAdapter(LVAdapter);
+        lv.setDivider(null);
+        lv.setDividerHeight(0);
+        lv.setAdapter(lVAdapter);
 
         if (paginationAllow())
     {
-            LV.setOnScrollListener(new AbsListView.OnScrollListener()
+            lv.setOnScrollListener(new AbsListView.OnScrollListener()
     {
 
                 public void onScrollStateChanged(AbsListView view, int scrollState)
@@ -354,12 +354,12 @@ public class ATFFragment extends Fragment
             });
         }
 
-        if (SwipeRefresh == null) return;
+        if (swipeRefresh == null) return;
 
         if (refreshingAllow())
     {
             //SwipeRefresh.setColorSchemeResources(R.color.colorAccent);
-            SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
     {
                 @Override
                 public void onRefresh()
@@ -370,7 +370,7 @@ public class ATFFragment extends Fragment
 
         } else {
 
-            SwipeRefresh.setEnabled(false);
+            swipeRefresh.setEnabled(false);
         }
     }
 
@@ -462,7 +462,7 @@ public class ATFFragment extends Fragment
     {
         refreshNavBar();
         createViews((views != null) ? views : getViews());
-        if (LVAdapter != null) LVAdapter.notifyDataSetChanged();
+        if (lVAdapter != null) lVAdapter.notifyDataSetChanged();
         viewDidAppear();
     }
 
@@ -473,13 +473,13 @@ public class ATFFragment extends Fragment
         resetViews();
 
         ArrayList<View> headerViews = getHeaderViews();
-        if (headerViews != null && headerViews.size() > 0) Views.addAll(getHeaderViews());
+        if (headerViews != null && headerViews.size() > 0) lvViews.addAll(getHeaderViews());
 
         if (views != null && views.size() != 0)
     {
             for (View itm : views)
     {
-                if (itm != null) Views.add(itm);
+                if (itm != null) lvViews.add(itm);
             }
 
         } else {
@@ -488,7 +488,7 @@ public class ATFFragment extends Fragment
 
             for (View itm : alt_views)
     {
-                if (itm != null) Views.add(itm);
+                if (itm != null) lvViews.add(itm);
             }
         }
     }
@@ -504,7 +504,7 @@ public class ATFFragment extends Fragment
 
     protected void resetViews()
     {
-        if (Views != null) Views.clear();
+        if (lvViews != null) lvViews.clear();
     }
 
     // #####################################################################
@@ -617,11 +617,11 @@ public class ATFFragment extends Fragment
         @Override
         public int getCount()
         {
-            if(Views == null) return 1;
-            if(Views.isEmpty()) return 1;
-            if(Views.size() == 0) return 1;
+            if(lvViews == null) return 1;
+            if(lvViews.isEmpty()) return 1;
+            if(lvViews.size() == 0) return 1;
 
-            return Views.size();
+            return lvViews.size();
         }
 
         // #####################################################################
@@ -655,7 +655,7 @@ public class ATFFragment extends Fragment
         {
             View v = null;
 
-            if(Views.size() != 0 && position <= Views.size()) v = (Views.get(position));
+            if(lvViews.size() != 0 && position <= lvViews.size()) v = (lvViews.get(position));
 
             if(v == null)
             {
@@ -697,7 +697,7 @@ public class ATFFragment extends Fragment
 
                 IsRequestLoading = true;
 
-                if(SwipeRefresh != null && SwipeRefresh.isRefreshing()) return;
+                if(swipeRefresh != null && swipeRefresh.isRefreshing()) return;
 
                 if(RequestIndicator != null)
                 {
@@ -733,7 +733,7 @@ public class ATFFragment extends Fragment
         {
             IsRequestLoading = false;
             if (RequestIndicator != null) RequestIndicator.dismiss();
-            if(SwipeRefresh != null) SwipeRefresh.setRefreshing(false);
+            if(swipeRefresh != null) swipeRefresh.setRefreshing(false);
         }
     }
 
