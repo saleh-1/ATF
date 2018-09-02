@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -40,7 +45,7 @@ public class ATFFragment extends Fragment
     public boolean viewAppeared = false;
 
     public ATFNavigationInterface navigationManager;
-    public ATFNavBarManagerInterface navBarManager;
+    public ATFNavBarInterface navBarManager;
     public ArrayList<String> notificationObserverQueue = new ArrayList<>();
 
     // onAttach
@@ -52,11 +57,11 @@ public class ATFFragment extends Fragment
 
     // #####################################################################
 
-    public static ATFFragment newInstantce(ATFNavBarManagerInterface nbmInterface, ATFNavigationInterface navigationInterface)
+    public static ATFFragment newInstantce(ATFNavBarInterface nbInterface, ATFNavigationInterface navigationInterface)
     {
         ATFFragment ins = new ATFFragment();
         ins.navigationManager = navigationInterface;
-        ins.navBarManager = nbmInterface;
+        ins.navBarManager = nbInterface;
 
         return ins;
     }
@@ -79,6 +84,8 @@ public class ATFFragment extends Fragment
         super.onCreate(savedInstanceState);
 
         setRetainInstance(true);
+
+        EventBus.getDefault().register(this);
     }
 
     // #####################################################################
@@ -112,7 +119,15 @@ public class ATFFragment extends Fragment
     public void onStart()
     {
         super.onStart();
-        startNotificationObserver();
+    }
+
+    // #####################################################################
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     // #####################################################################
@@ -175,32 +190,22 @@ public class ATFFragment extends Fragment
 
     // #####################################################################
 
-    public void addNotificationObserver(String notification)
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(NotificationMessageEvent nme)
     {
         //
-        if (notificationObserverQueue == null) notificationObserverQueue = new ArrayList<>();
-        notificationObserverQueue.add(notification);
-    }
-
-    // #####################################################################
-
-    public void startNotificationObserver()
-    {
-        //
-        if (notificationObserverQueue == null || notificationObserverQueue.size() == 0) return;
-
-        for (String itm : notificationObserverQueue)
-    {
-            notificationObserverHandler(itm);
-            notificationObserverQueue.remove(itm);
+        if(nme.message == "AuthFailure")
+        {
+            logout();
+            Log.i("NotificationMessageEvent",nme.message);
         }
     }
 
     // #####################################################################
 
-    public void notificationObserverHandler(String notification)
+    public static void addNotificationObserver(String notificationMessage)
     {
-        //
+        EventBus.getDefault().post(new ATFFragment.NotificationMessageEvent(notificationMessage));
     }
 
 
@@ -596,6 +601,19 @@ public class ATFFragment extends Fragment
         {
             loadingIndicator.startLoading();
             runnable.run();
+        }
+    }
+
+
+    // #####################################################################
+
+    public static class NotificationMessageEvent
+    {
+        public String message;
+
+        public NotificationMessageEvent(String message)
+        {
+            this.message = message;
         }
     }
 

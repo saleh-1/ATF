@@ -223,7 +223,7 @@ public class ATFActivity extends AppCompatActivity
 
     // #####################################################################
 
-    public class NavBarManager implements ATFNavBarManagerInterface
+    public class NavBarManager implements ATFNavBarInterface
     {
 
         // #####################################################################

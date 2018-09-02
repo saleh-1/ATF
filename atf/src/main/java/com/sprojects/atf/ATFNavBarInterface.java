@@ -2,7 +2,7 @@ package com.sprojects.atf;
 
 import android.view.View;
 
-public interface ATFNavBarManagerInterface
+public interface ATFNavBarInterface
 {
     void setTitle(String title);
     void setRightButton(View v);

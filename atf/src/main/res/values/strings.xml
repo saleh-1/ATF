@@ -13,4 +13,17 @@
     <string name="search_button">بحث</string>
     <string name="search_results">نتائج البحث</string>
     <string name="search_title_invalid">نص البحث غير صالح</string>
+
+    <string name="response_parse_error">خطأ في معالجة الطلب</string>
+    <string name="no_internet_connection">تأكد من إتصالك بالإنترنت !</string>
+    <string name="error_auth">خطأ في المصادقة</string>
+    <string name="err_network_error">خطأ في الشبكة !</string>
+    <string name="err_timeout_error">إنتهت مهلة الطلب !</string>
+    <string name="error_request">خطأ في الطلب !</string>
+    <string name="no_response">لا يوجد إستجابة !</string>
+    <string name="error_response">خطأ في الإستجابة !</string>
+
+    <string name="error">خطأ</string>
+
+
 </resources>
