@@ -558,6 +558,7 @@ public class ATFModels
             if(response == null) return false;
 
             OAuth oa = OAuth.fromJson(context, response.responseJsonObject);
+            oa.atfResponse = response;
             if(oa != null && oa.save()) return true;
 
             return false;
