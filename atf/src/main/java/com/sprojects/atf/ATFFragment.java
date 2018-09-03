@@ -583,9 +583,9 @@ public class ATFFragment extends Fragment
 
     public void logout()
     {
-        //Models.OAuth.clearLocally(context);
-        //Models.UserObj.clearLocally(context);
-        //if (navBarManager != null) navBarManager.refreshActivity();
+        ATFModels.OAuth.clear(context);
+        if (navBarManager != null) navBarManager.refreshActivity();
+        showToastError(context, getString(R.string.fource_user_logout));
     }
 
 

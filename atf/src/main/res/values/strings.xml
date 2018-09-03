@@ -24,6 +24,7 @@
     <string name="error_response">خطأ في الإستجابة !</string>
 
     <string name="error">خطأ</string>
+    <string name="fource_user_logout">سيتم تسجيل الخروج</string>
 
 
 </resources>
