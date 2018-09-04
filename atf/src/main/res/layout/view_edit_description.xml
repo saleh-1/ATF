@@ -1,0 +1,46 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <TextView
+        android:id="@+id/view_edit_description_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="18dp"
+        android:textAlignment="textStart"
+        android:textSize="16sp"
+        android:textColor="@color/colorPrimary"
+        />
+
+
+
+    <EditText
+        android:id="@+id/view_edit_description_et"
+        android:theme="@style/EditTextStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:padding="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="15sp"
+        android:background="@drawable/rc_white"
+        android:scrollbars="vertical"
+        android:inputType="textMultiLine"
+        android:textCursorDrawable="@null"
+        android:gravity="top|start"
+        android:textAlignment="viewStart"
+        />
+
+
+</LinearLayout>

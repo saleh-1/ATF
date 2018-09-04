@@ -31,7 +31,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 
-    // third party libraries
+    // Third party libraries
 
     // EventBus
     implementation 'org.greenrobot:eventbus:3.1.1'
@@ -42,5 +42,21 @@ dependencies {
     //BottomNavigationView
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
     implementation "com.android.support:design:27.1.1"
+
+    // image loader
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
+
+    // Couchbase lite
+    implementation 'com.couchbase.lite:couchbase-lite-android:2.0.0'
+
+    // Location
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+
+    // Toasty    The usual Toast, but with steroids.
+    implementation 'com.github.GrenderG:Toasty:1.3.0'
+
+    // dexter runtime permissions
+    implementation 'com.karumi:dexter:5.0.0'
 
 }
