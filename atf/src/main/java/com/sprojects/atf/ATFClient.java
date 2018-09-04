@@ -143,12 +143,11 @@ public class ATFClient
 
                             //
                             sendRequest(rtRequest);
+                            return;
                         }
 
 
                     }else if (error instanceof ServerError){
-
-                        atfRequest.requestInterface.onError(context.getString(R.string.error_response));
 
                         // For tracking errors
                         ///*
@@ -160,6 +159,9 @@ public class ATFClient
                             Log.i("NetworkResponse-Log", e.getMessage());
                         }
                         //*/
+
+                        atfRequest.requestInterface.onError(context.getString(R.string.error_response));
+                        return;
                     }
                 }
 
