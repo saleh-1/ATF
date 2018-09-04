@@ -496,6 +496,37 @@ public class ATFViews
         return null;
     }
 
+    // #####################################################################
+
+    public static View viewActionSheetItem(Context context, String text, final Runnable runnable)
+    {
+        try{
+
+            View v = getViewByResId(context, R.layout.view_actionsheet_item);
+            if(v == null) return null;
+
+            TextView textView = v.findViewById(R.id.view_actionsheet_item_text);
+            textView.setText(text);
+
+            if(runnable != null)
+            {
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        runnable.run();
+                    }
+                });
+            }
+
+            return v;
+
+        }catch (Exception ex){
+            //
+        }
+
+        return null;
+    }
+
 
     // #####################################################################
 
