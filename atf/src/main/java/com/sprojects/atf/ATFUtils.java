@@ -388,7 +388,7 @@ public class ATFUtils
 
             if(addCancelView)
             {
-                View cancelView = ATFViews.viewTitleIconAction(context, context.getString(R.string.cancel), R.drawable.back2, new Runnable() {
+                View cancelView = ATFViews.viewTitleIconAction(context, context.getString(R.string.cancel), R.drawable.back, new Runnable() {
                     @Override
                     public void run() {
                         cancel();

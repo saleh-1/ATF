@@ -19,8 +19,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$PROJECT_DIR$/../ATFControllersProject/atfcontrollers/src/main/res/drawable-xxhdpi/back2.png" />
-                                      <entry key="outputName" value="back2" />
+                                      <entry key="imageAsset" value="$PROJECT_DIR$/../MStore Icons/icons8-menu-vertical-96.png" />
+                                      <entry key="outputName" value="menu" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="000000" />
                                     </map>
