@@ -89,66 +89,72 @@ public class ATFClient
             @Override
             public void onErrorResponse(VolleyError error)
             {
+
                 //
                 if(error.networkResponse != null)
                 {
                     //
                     responseLog(error.networkResponse.statusCode);
 
-                    //
-                    if(error instanceof NoConnectionError){
+                }
 
-                        atfRequest.requestInterface.onError(context.getString(R.string.no_internet_connection));
+                //
+                if(error instanceof NoConnectionError){
+
+                    atfRequest.requestInterface.onError(context.getString(R.string.no_internet_connection));
+                    return;
+
+                }else if (error instanceof NetworkError){
+
+                    atfRequest.requestInterface.onError(context.getString(R.string.err_network_error));
+                    return;
+
+                }else if (error instanceof TimeoutError){
+
+                    atfRequest.requestInterface.onError(context.getString(R.string.err_timeout_error));
+                    return;
+
+                }else if (error instanceof AuthFailureError){
+
+                    if(atfRequest.requestType == ATFRequest.RequestType.RefreshToken)
+                    {
+                        // logout ....
+                        atfRequest.requestInterface.onError(context.getString(R.string.error_auth));
+                        ATFFragment.addNotificationObserver("AuthFailure");
                         return;
 
-                    }else if (error instanceof NetworkError){
+                    }else{
 
-                        atfRequest.requestInterface.onError(context.getString(R.string.err_network_error));
-                        return;
+                        ATFRequest rtRequest = ATFRequest.createRefreshTokenRequest(context, new ATFRequestInterface() {
+                            @Override
+                            public void onDataReceived(ATFResponse xResponse) {
+                                if(ATFModels.OAuth.AuthResponseHandler(context, xResponse))
+                                {
+                                    sendRequest(atfRequest);
 
-                    }else if (error instanceof TimeoutError){
+                                }else{
 
-                        atfRequest.requestInterface.onError(context.getString(R.string.err_timeout_error));
-                        return;
-
-                    }else if (error instanceof AuthFailureError){
-
-                        if(atfRequest.requestType == ATFRequest.RequestType.RefreshToken)
-                        {
-                            // logout ....
-                            atfRequest.requestInterface.onError(context.getString(R.string.error_auth));
-                            ATFFragment.addNotificationObserver("AuthFailure");
-                            return;
-
-                        }else{
-
-                            ATFRequest rtRequest = ATFRequest.createRefreshTokenRequest(context, new ATFRequestInterface() {
-                                @Override
-                                public void onDataReceived(ATFResponse xResponse) {
-                                    if(ATFModels.OAuth.AuthResponseHandler(context, xResponse))
-                                    {
-                                        sendRequest(atfRequest);
-
-                                    }else{
-
-                                        atfRequest.requestInterface.onError(context.getString(R.string.error_auth));
-                                    }
-                                }
-
-                                @Override
-                                public void onError(String message) {
                                     atfRequest.requestInterface.onError(context.getString(R.string.error_auth));
                                 }
-                            });
+                            }
 
-                            //
-                            sendRequest(rtRequest);
-                            return;
-                        }
+                            @Override
+                            public void onError(String message) {
+                                atfRequest.requestInterface.onError(context.getString(R.string.error_auth));
+                            }
+                        });
+
+                        //
+                        sendRequest(rtRequest);
+                        return;
+                    }
 
 
-                    }else if (error instanceof ServerError){
+                }else if (error instanceof ServerError){
 
+                    //
+                    if(error.networkResponse != null)
+                    {
                         // For tracking errors
                         ///*
                         try {
@@ -158,10 +164,10 @@ public class ATFClient
                             Log.i("NetworkResponse-Log", e.getMessage());
                         }
                         //*/
-
-                        atfRequest.requestInterface.onError(context.getString(R.string.error_response));
-                        return;
                     }
+
+                    atfRequest.requestInterface.onError(context.getString(R.string.error_response));
+                    return;
                 }
 
                 atfRequest.requestInterface.onError(context.getString(R.string.error_request));
