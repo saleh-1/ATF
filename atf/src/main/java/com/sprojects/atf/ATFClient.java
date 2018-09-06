@@ -152,8 +152,7 @@ public class ATFClient
                         // For tracking errors
                         ///*
                         try {
-                            String resSource = new String(error.networkResponse.data,"UTF-8");
-                            Log.i("NetworkResponse-Log", resSource);
+                            Log.i("NetworkResponse-Log", new String(error.networkResponse.data,"UTF-8"));
 
                         } catch (UnsupportedEncodingException e) {
                             Log.i("NetworkResponse-Log", e.getMessage());
