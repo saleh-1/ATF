@@ -165,6 +165,7 @@ public class ATFClient
                 }
 
                 atfRequest.requestInterface.onError(context.getString(R.string.error_request));
+                responseLog(0);
                 return;
             }
         };
