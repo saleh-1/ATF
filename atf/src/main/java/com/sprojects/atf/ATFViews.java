@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -474,6 +475,90 @@ public class ATFViews
         return null;
     }
 
+
+    // #####################################################################
+
+    public static View viewTextDescription(Context context, String description, boolean centered, final Runnable runnable)
+    {
+        try{
+            View v = ATFViews.getViewByResId(context, R.layout.view_text_description);
+            if(v == null) return null;
+
+            //
+            TextView tvText = v.findViewById(R.id.view_text_description_et);
+            tvText.setText(description);
+
+            if(centered)
+            {
+                tvText.setGravity(Gravity.CENTER);
+
+            }else{
+
+                tvText.setGravity(Gravity.START);
+            }
+
+            if(runnable != null)
+            {
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        runnable.run();
+                    }
+                });
+            }
+
+            return v;
+
+        }catch (Exception ex){
+            //
+        }
+
+        return null;
+    }
+
+    // #####################################################################
+
+    public static View viewArticle(Context context, String title, String text)
+    {
+        try{
+            View v = ATFViews.getViewByResId(context, R.layout.view_article);
+            if(v == null) return null;
+
+            TextView tvTitle = v.findViewById(R.id.view_article_title);
+            tvTitle.setText(title);
+
+            TextView tvText = v.findViewById(R.id.view_article_text);
+            tvText.setText(text);
+
+            return v;
+
+        }catch (Exception ex){
+            //
+        }
+
+        return null;
+    }
+
+    // #####################################################################
+
+    public static View viewHintText(Context context, String text)
+    {
+        try{
+
+            View v = ATFViews.getViewByResId(context, R.layout.view_hint_text);
+            if(v == null) return null;
+
+            TextView textView = v.findViewById(R.id.view_hint_text_text);
+            textView.setText(text);
+
+            return v;
+
+        }catch (Exception ex){
+            //
+        }
+
+        return null;
+    }
 
     // #####################################################################
 
