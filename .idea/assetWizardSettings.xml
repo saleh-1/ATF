@@ -19,8 +19,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$PROJECT_DIR$/../MStore Icons/icons8-menu-vertical-96.png" />
-                                      <entry key="outputName" value="menu" />
+                                      <entry key="imageAsset" value="$PROJECT_DIR$/../MStore Icons/basic/icons8-info-96.png" />
+                                      <entry key="outputName" value="info" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="000000" />
                                     </map>

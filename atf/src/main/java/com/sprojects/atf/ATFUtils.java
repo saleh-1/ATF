@@ -1076,7 +1076,11 @@ public class ATFUtils
 
     public static void showToastError(Context context, String message)
     {
-        Toasty.error(context, message, Toast.LENGTH_LONG, true).show();
+        try{
+            Toasty.error(context, message, Toast.LENGTH_LONG, true).show();
+
+        }catch(Exception e)
+        {}
     }
 
 
@@ -1084,7 +1088,11 @@ public class ATFUtils
 
     public static void showToastInfo(Context context, String message)
     {
-        Toasty.normal(context, message, Toast.LENGTH_LONG, context.getResources().getDrawable(getResourceId(context,"ic_info", "drawable"))).show();
+        try{
+            Toasty.normal(context, message, Toast.LENGTH_LONG, context.getResources().getDrawable(getResourceId(context,"info", "drawable"))).show();
+
+        }catch(Exception e)
+        {}
     }
 
 
