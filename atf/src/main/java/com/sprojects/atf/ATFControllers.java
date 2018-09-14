@@ -118,7 +118,7 @@ public class ATFControllers
 
         // #####################################################################
 
-        public ATFModels.ModelInterfaceList modelInterfaceListHandler(boolean asNew)
+        public ATFModels.ModelInterfaceList modelInterfaceListHandler(final boolean asNew)
         {
             return new ATFModels.ModelInterfaceList() {
 
@@ -145,7 +145,19 @@ public class ATFControllers
                         if(v != null) views.add(v);
                     }
 
-                    if(views.size() > 0) refreshViews(views);
+                    if(views.size() > 0)
+                    {
+                        if(asNew)
+                        {
+                            refreshViews(views);
+
+                        }else{
+                            ArrayList<View> v = new ArrayList<>();
+                            v.addAll(lvViews);
+                            v.addAll(views);
+                            refreshViews(v);
+                        }
+                    }
                 }
 
                 @Override
