@@ -341,20 +341,24 @@ public class ATFFragment extends Fragment
         lv.setAdapter(lVAdapter);
 
         if (paginationAllow())
-    {
+        {
             lv.setOnScrollListener(new AbsListView.OnScrollListener()
-    {
+            {
 
                 public void onScrollStateChanged(AbsListView view, int scrollState)
-    {
+                {
+                    if(scrollState == SCROLL_STATE_IDLE && lv.getLastVisiblePosition() == lvViews.size() - 1)
+                    {
+                        paginationAction();
+                    }
                 }
 
                 public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
-    {
-                    if (firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0)
-    {
-                        paginationAction();
-                    }
+                {
+                    //if (firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0)
+                    //{
+                    //    paginationAction();
+                    //}
                 }
             });
         }
