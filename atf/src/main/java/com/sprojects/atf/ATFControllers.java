@@ -80,7 +80,7 @@ public class ATFControllers
         @Override
         public boolean paginationAllow()
         {
-            return false;
+            return true;
         }
 
         @Override
