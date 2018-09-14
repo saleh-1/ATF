@@ -110,7 +110,7 @@ public class ATFRequest
 
         if(httpMethod == HttpMethod.GET || httpMethod == HttpMethod.DELETE)
         {
-            if(this.params != null && this.params.size() > 1)
+            if(this.params != null && this.params.size() > 0)
             {
                 Uri.Builder builder = new Uri.Builder();
 
