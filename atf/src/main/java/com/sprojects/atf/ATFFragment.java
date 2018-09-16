@@ -440,7 +440,7 @@ public class ATFFragment extends Fragment
     {
         hideKeyboard();
 
-        if (navigationManager != null) navigationManager.popFragment(position, notification);
+        if (navigationManager != null) navigationManager.popFragment(position);
     }
 
 

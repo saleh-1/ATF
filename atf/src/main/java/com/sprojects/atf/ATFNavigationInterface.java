@@ -4,6 +4,6 @@ public interface ATFNavigationInterface
 {
     void pushFragment(ATFFragment newFragment);
     void popFragment();
-    void popFragment(int position, String notification);
+    void popFragment(int position);
     int getDepth();
 }

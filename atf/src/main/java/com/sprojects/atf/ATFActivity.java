@@ -160,13 +160,13 @@ public class ATFActivity extends AppCompatActivity
         @Override
         public void popFragment()
         {
-            popFragment(1, null);
+            popFragment(1);
         }
 
         // #####################################################################
 
         @Override
-        public void popFragment(int position, String notification)
+        public void popFragment(int position)
         {
             if(currentTab == null) return;
             if(currentTab.stackFragments == null || currentTab.stackFragments.size() < (position+1)) return;
