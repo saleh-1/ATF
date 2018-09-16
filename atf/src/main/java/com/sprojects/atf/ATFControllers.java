@@ -2,6 +2,9 @@ package com.sprojects.atf;
 
 import android.view.View;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 
 public class ATFControllers
@@ -60,6 +63,20 @@ public class ATFControllers
             prepare();
             sendRequestForInit();
             showLoadingView();
+        }
+
+        // #####################################################################
+
+        @Override
+        public void onMessageEvent(NotificationMessageEvent nme)
+        {
+            super.onMessageEvent(nme);
+
+            //
+            if(nme.message == "Reload")
+            {
+                init();
+            }
         }
 
         // #####################################################################
