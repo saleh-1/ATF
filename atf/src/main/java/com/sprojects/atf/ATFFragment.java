@@ -197,7 +197,10 @@ public class ATFFragment extends Fragment
         if(nme.message == "AuthFailure")
         {
             logout();
-            Log.i("NotificationMessageEvent",nme.message);
+
+        }else if(nme.message == "Reload"){
+
+            init();
         }
     }
 
