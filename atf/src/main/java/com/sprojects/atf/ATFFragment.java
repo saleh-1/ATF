@@ -436,7 +436,7 @@ public class ATFFragment extends Fragment
 
     // #####################################################################
 
-    public void popFragment(int position, String notification)
+    public void popFragment(int position)
     {
         hideKeyboard();
 
