@@ -484,18 +484,18 @@ public class ATFFragment extends Fragment
         if (headerViews != null && headerViews.size() > 0) lvViews.addAll(getHeaderViews());
 
         if (views != null && views.size() != 0)
-    {
+        {
             for (View itm : views)
-    {
+            {
                 if (itm != null) lvViews.add(itm);
             }
 
-        } else {
+        }else{
 
             ArrayList<View> alt_views = getAltViews();
 
             for (View itm : alt_views)
-    {
+            {
                 if (itm != null) lvViews.add(itm);
             }
         }
@@ -625,12 +625,17 @@ public class ATFFragment extends Fragment
 
     public class LVAdapter extends BaseAdapter
     {
+        public ArrayList<View> adapterViews = new ArrayList<>();
 
         // #####################################################################
 
         public LVAdapter(Context context)
         {
             super();
+            ArrayList<View> headerViews = getHeaderViews();
+            if (headerViews != null && headerViews.size() > 0) adapterViews.addAll(getHeaderViews());
+            if (lvViews != null && lvViews.size() > 0) adapterViews.addAll(lvViews);
+
         }
 
         // #####################################################################
@@ -638,11 +643,11 @@ public class ATFFragment extends Fragment
         @Override
         public int getCount()
         {
-            if(lvViews == null) return 1;
-            if(lvViews.isEmpty()) return 1;
-            if(lvViews.size() == 0) return 1;
+            if(adapterViews == null) return 1;
+            if(adapterViews.isEmpty()) return 1;
+            if(adapterViews.size() == 0) return 1;
 
-            return lvViews.size();
+            return adapterViews.size();
         }
 
         // #####################################################################
@@ -676,7 +681,7 @@ public class ATFFragment extends Fragment
         {
             View v = null;
 
-            if(lvViews.size() != 0 && position <= lvViews.size()) v = (lvViews.get(position));
+            if(adapterViews.size() != 0 && position <= adapterViews.size()) v = (adapterViews.get(position));
 
             if(v == null)
             {
