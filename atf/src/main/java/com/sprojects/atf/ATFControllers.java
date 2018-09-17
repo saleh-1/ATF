@@ -68,6 +68,7 @@ public class ATFControllers
         // #####################################################################
 
         @Override
+        @Subscribe(threadMode = ThreadMode.MAIN)
         public void onMessageEvent(NotificationMessageEvent nme)
         {
             super.onMessageEvent(nme);
