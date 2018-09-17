@@ -187,7 +187,7 @@ public class ATFActivity extends AppCompatActivity
             final ATFFragment f = currentTab.getFragment();
             if(notificationObserverMessage != null && !notificationObserverMessage.isEmpty())
             {
-                ATFUtils.actionDelayed(1000, new Runnable() {
+                ATFUtils.actionDelayed(500, new Runnable() {
                     @Override
                     public void run() {
                         f.addNotificationObserver(notificationObserverMessage);
