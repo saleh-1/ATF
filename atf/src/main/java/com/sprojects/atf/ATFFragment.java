@@ -432,11 +432,11 @@ public class ATFFragment extends Fragment
 
     // #####################################################################
 
-    public void popFragment(int position)
+    public void popFragment(int position, String notificationObserverMessage)
     {
         hideKeyboard();
 
-        if (navigationManager != null) navigationManager.popFragment(position);
+        if (navigationManager != null) navigationManager.popFragment(position, notificationObserverMessage);
     }
 
 
