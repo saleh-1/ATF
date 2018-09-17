@@ -625,17 +625,22 @@ public class ATFFragment extends Fragment
 
     public class LVAdapter extends BaseAdapter
     {
-        public ArrayList<View> adapterViews = new ArrayList<>();
-
         // #####################################################################
 
         public LVAdapter(Context context)
         {
             super();
+        }
+
+        public ArrayList<View> getAdapterViews()
+        {
+            ArrayList<View> adapterViews = new ArrayList<>();
+
             ArrayList<View> headerViews = getHeaderViews();
             if (headerViews != null && headerViews.size() > 0) adapterViews.addAll(getHeaderViews());
             if (lvViews != null && lvViews.size() > 0) adapterViews.addAll(lvViews);
 
+            return adapterViews;
         }
 
         // #####################################################################
@@ -643,6 +648,8 @@ public class ATFFragment extends Fragment
         @Override
         public int getCount()
         {
+            ArrayList<View> adapterViews = getAdapterViews();
+
             if(adapterViews == null) return 1;
             if(adapterViews.isEmpty()) return 1;
             if(adapterViews.size() == 0) return 1;
@@ -679,6 +686,8 @@ public class ATFFragment extends Fragment
         @Override
         public View getView(int position, View convertView, ViewGroup parent)
         {
+            ArrayList<View> adapterViews = getAdapterViews();
+
             View v = null;
 
             if(adapterViews.size() != 0 && position <= adapterViews.size()) v = (adapterViews.get(position));
