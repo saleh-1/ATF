@@ -38,7 +38,7 @@ public class ATFFragment extends Fragment
 {
     protected Context context;
     public ArrayList<View> lvViews = new ArrayList<>();
-    private ArrayList<View> headerViews = new ArrayList<>();
+    public ArrayList<View> headerViews = new ArrayList<>();
     public LoadingIndicator loadingIndicator;
     public SwipeRefreshLayout swipeRefresh;
     public ListView lv;
