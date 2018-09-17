@@ -174,7 +174,7 @@ public class ATFActivity extends AppCompatActivity
         // #####################################################################
 
         @Override
-        public void popFragment(int position, String notificationObserverMessage)
+        public void popFragment(int position, final String notificationObserverMessage)
         {
             if(currentTab == null) return;
             if(currentTab.stackFragments == null || currentTab.stackFragments.size() < (position+1)) return;
@@ -184,10 +184,15 @@ public class ATFActivity extends AppCompatActivity
                 currentTab.stackFragments.remove(currentTab.getFragment());
             }
 
-            ATFFragment f = currentTab.getFragment();
+            final ATFFragment f = currentTab.getFragment();
             if(notificationObserverMessage != null && !notificationObserverMessage.isEmpty())
             {
-                f.addNotificationObserver(notificationObserverMessage);
+                ATFUtils.actionDelayed(1000, new Runnable() {
+                    @Override
+                    public void run() {
+                        f.addNotificationObserver(notificationObserverMessage);
+                    }
+                });
             }
 
             viewFragment(f);
