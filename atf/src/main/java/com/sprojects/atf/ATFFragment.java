@@ -481,7 +481,7 @@ public class ATFFragment extends Fragment
         resetViews();
 
         ArrayList<View> headerViews = getHeaderViews();
-        if (headerViews != null && headerViews.size() > 0) lvViews.addAll(getHeaderViews());
+        //if (headerViews != null && headerViews.size() > 0) lvViews.addAll(getHeaderViews());
 
         if (views != null && views.size() != 0)
         {
@@ -690,7 +690,7 @@ public class ATFFragment extends Fragment
 
             View v = null;
 
-            if(adapterViews.size() != 0 && position <= adapterViews.size()) v = (adapterViews.get(position));
+            if(adapterViews.size() != 0 && position <= adapterViews.size()) v = adapterViews.get(position);
 
             if(v == null)
             {
