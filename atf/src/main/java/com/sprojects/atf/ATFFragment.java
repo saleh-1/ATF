@@ -38,6 +38,7 @@ public class ATFFragment extends Fragment
 {
     protected Context context;
     public ArrayList<View> lvViews = new ArrayList<>();
+    private ArrayList<View> headerViews = new ArrayList<>();
     public LoadingIndicator loadingIndicator;
     public SwipeRefreshLayout swipeRefresh;
     public ListView lv;
@@ -346,7 +347,8 @@ public class ATFFragment extends Fragment
 
                 public void onScrollStateChanged(AbsListView view, int scrollState)
                 {
-                    if(scrollState == SCROLL_STATE_IDLE && lv.getLastVisiblePosition() == lvViews.size() - 1)
+                    int viewsCount = lvViews.size() + headerViews.size();
+                    if(scrollState == SCROLL_STATE_IDLE && lv.getLastVisiblePosition() == viewsCount - 1)
                     {
                         paginationAction();
                     }
@@ -480,7 +482,7 @@ public class ATFFragment extends Fragment
     {
         resetViews();
 
-        ArrayList<View> headerViews = getHeaderViews();
+        //ArrayList<View> headerViews = getHeaderViews();
         //if (headerViews != null && headerViews.size() > 0) lvViews.addAll(getHeaderViews());
 
         if (views != null && views.size() != 0)
