@@ -152,6 +152,7 @@ public class ATFControllers
                     }else{
 
                         dataDidLoaded = true;
+                        dataDidLoaded();
                     }
 
 
@@ -195,6 +196,13 @@ public class ATFControllers
                     }
                 }
             };
+        }
+
+        // #####################################################################
+
+        public void dataDidLoaded()
+        {
+
         }
 
         // #####################################################################
