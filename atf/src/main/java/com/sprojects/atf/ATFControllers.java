@@ -15,6 +15,21 @@ public class ATFControllers
 
     public static class ControllerBase extends ATFFragment
     {
+
+        // #####################################################################
+
+        @Override
+        @Subscribe(threadMode = ThreadMode.MAIN)
+        public void onMessageEvent(NotificationMessageEvent nme)
+        {
+            super.onMessageEvent(nme);
+
+            //
+            if(nme.message == "Reload")
+            {
+                init();
+            }
+        }
         // #####################################################################
 
         public ATFModels.ModelInterfaceAction modelInterfaceActionHandler(final Runnable successRunnable)
@@ -63,21 +78,6 @@ public class ATFControllers
             prepare();
             sendRequestForInit();
             showLoadingView();
-        }
-
-        // #####################################################################
-
-        @Override
-        @Subscribe(threadMode = ThreadMode.MAIN)
-        public void onMessageEvent(NotificationMessageEvent nme)
-        {
-            super.onMessageEvent(nme);
-
-            //
-            if(nme.message == "Reload")
-            {
-                init();
-            }
         }
 
         // #####################################################################
