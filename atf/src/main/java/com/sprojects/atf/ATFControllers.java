@@ -296,7 +296,16 @@ public class ATFControllers
                 @Override
                 public void onDataReceived(Object object) {
                     loadingIndicator.stopLoading();
-                    setupView(object);
+                    if(object == null)
+                    {
+                        onError(getString(R.string.no_data));
+                        return;
+
+                    }else{
+
+                        dataDidLoaded();
+                        setupView(object);
+                    }
                 }
 
                 @Override
@@ -308,6 +317,13 @@ public class ATFControllers
                     ATFUtils.showToastInfo(context, message);
                 }
             };
+        }
+
+        // #####################################################################
+
+        public void dataDidLoaded()
+        {
+
         }
 
 
