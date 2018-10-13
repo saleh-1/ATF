@@ -221,6 +221,7 @@ public class ATFControllers
 
     public static class ControllerDetailsBase extends ControllerBase
     {
+        protected boolean dataDidLoaded = false;
         // #####################################################################
 
         protected void prepare()
@@ -303,6 +304,7 @@ public class ATFControllers
 
                     }else{
 
+                        dataDidLoaded = true;
                         dataDidLoaded();
                         setupView(object);
                     }
